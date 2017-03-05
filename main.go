@@ -8,9 +8,12 @@ import (
 	//	"time"
 )
 
+var g_bufSize int
+
 func main() {
 	fmt.Println("Hello World!")
 	service := ":1201"
+	g_bufSize = 512 //Set default buf size
 
 	udpAddr, _ := net.ResolveUDPAddr("udp4", service)
 	//checkError(err)
@@ -34,5 +37,12 @@ func handleclient(conn *net.UDPConn) {
 
 	fmt.Println(addr.IP)
 	fmt.Println(buf)
+}
 
+func setDefaultBufSize(size int) {
+	if size <= 0 {
+		g_bufSize = 512
+	} else {
+		g_bufSize = size
+	}
 }
