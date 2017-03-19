@@ -35,7 +35,7 @@ func handleclient(conn *net.UDPConn) {
 		return
 	}
 
-	fmt.Println(addr.IP)
+	fmt.Println(addr.IP, " ", addr.Port)
 	fmt.Println(buf)
 }
 
